@@ -3,8 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 export interface Advice {
-  id: string;
-  advice: string;
+  slip: { id: string; advice: string };
 }
 
 @Injectable({

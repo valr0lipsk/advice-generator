@@ -1,6 +1,6 @@
 <ng-container>
-  <p class="advice__title">Advice #{{ advice.id }}</p>
-  <p class="advice__text">"advice.advice"</p>
+  <p class="advice__title">Advice # {{ advice?.slip?.id }}</p>
+  <p class="advice__text">"{{ advice?.slip?.advice }}"</p>
   <div class="advice__divider"></div>
   <app-svg-icon [icon]="'dividerDesktop'"></app-svg-icon>
   <button type="button" class="btn--primary" (click)="onClick()">
