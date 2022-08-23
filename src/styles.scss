@@ -1,1 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+@import "./fonts/manrope/font.css";
+
+:root {
+  --background-color: hsl(218, 23%, 16%);
+  --block-color: hsl(217, 19%, 24%);
+  --shadow-color: hsl(218, 23%, 16%);
+  --main-green: hsl(150, 100%, 66%);
+  --text-color: hsl(193, 38%, 86%);
+  --font-family: "Manrope", sans-serif;
+}
+
+body {
+  background-color: var(--background-color);
+  height: 100%;
+  margin: 0;
+}
+
+html {
+  height: 100%;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
