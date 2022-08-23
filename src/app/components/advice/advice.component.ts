@@ -5,7 +5,7 @@ import {
   OnDestroy,
   OnInit,
 } from '@angular/core';
-import { Subject, takeUntil, tap } from 'rxjs';
+import { map, Subject, takeUntil, tap } from 'rxjs';
 import { Advice, BackendService } from 'src/app/backend.service';
 
 @Component({
@@ -16,6 +16,7 @@ import { Advice, BackendService } from 'src/app/backend.service';
 })
 export class AdviceComponent implements OnDestroy, OnInit {
   public advice: Advice | undefined;
+  public isLoading = true;
   private readonly unsubscribe$$ = new Subject<void>();
 
   public constructor(
@@ -24,24 +25,25 @@ export class AdviceComponent implements OnDestroy, OnInit {
   ) {}
 
   public ngOnInit(): void {
+    this.isLoading = true;
     this.backend
       .getAdvice$()
       .pipe(takeUntil(this.unsubscribe$$))
       .subscribe((ad) => {
         this.advice = ad;
+        this.isLoading = false;
         this.cdr.detectChanges();
       });
   }
 
   public onClick(): void {
+    this.isLoading = true;
     this.backend
       .getAdvice$()
-      .pipe(
-        takeUntil(this.unsubscribe$$),
-        tap((ad) => console.log(ad))
-      )
+      .pipe(takeUntil(this.unsubscribe$$))
       .subscribe((ad) => {
         this.advice = ad;
+        this.isLoading = false;
         this.cdr.detectChanges();
       });
   }
